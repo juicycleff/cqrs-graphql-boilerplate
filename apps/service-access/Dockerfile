@@ -9,12 +9,12 @@ ADD . /usr/src/app
 
 WORKDIR /usr/src/app
 
-RUN yarn global add @nestjs/cli
+RUN yarn global add @nestjs/cli@7.2.0
 
 RUN yarn install --production=false
 
-RUN yarn global add rimraf
-RUN yarn global add @nestjs/cli
+RUN yarn global add rimraf@3.0.2
+RUN yarn global add @nestjs/cli@7.2.0
 
 # Build production files
 RUN nest build proto-schema

@@ -9,7 +9,7 @@ ADD . /nest
 
 WORKDIR /nest
 
-RUN yarn global add @nestjs/cli
+RUN yarn global add @nestjs/cli@7.2.0
 
 RUN yarn install --production=false
 
@@ -20,5 +20,5 @@ RUN nest build service-billing
 # Bundle app source
 COPY . .
 
-EXPOSE 50067
+EXPOSE 5067
 CMD ["node", "dist/apps/service-billing/main.js"]

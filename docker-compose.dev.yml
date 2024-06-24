@@ -169,7 +169,7 @@ services:
     environment:
       - CONSUL_HOST=consul
       - NATS_HOST=nats
-      - REDIS_HOST=nats
+      - REDIS_HOST=redis
       - DISCOVERY_HOST=localhost
     ports:
       - 50020:50020
@@ -185,7 +185,7 @@ services:
       - "8400:8400"
       - "8500:8500"
       - "8600:53/udp"
-    image: consul
+    image: hashicorp/consul
     command: ["agent", "-server", "-bootstrap", "-ui", "-client", "0.0.0.0"]
     labels:
       kompose.service.type: nodeport

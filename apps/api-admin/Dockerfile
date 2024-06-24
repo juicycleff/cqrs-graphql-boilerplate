@@ -9,7 +9,7 @@ ADD . /nest
 
 WORKDIR /nest
 
-RUN yarn global add @nestjs/cli
+RUN yarn global add @nestjs/cli@7.2.0
 
 RUN yarn install --production=false
 

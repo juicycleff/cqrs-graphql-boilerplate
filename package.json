@@ -27,9 +27,7 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./apps/gateway-admin/apps/signals/dfour-microservice-backend/test/jest-e2e.json",
     "kompose": "kompose convert -o kubernetes/deployment.yaml",
-    "docs": "npx compodoc --theme material --output docs -p tsconfig.json -s",
-    "snyk-protect": "snyk protect",
-    "prepare": "yarn run snyk-protect"
+    "docs": "npx compodoc --theme material --output docs -p tsconfig.json -s"
   },
   "dependencies": {
     "@anchan828/nest-sendgrid": "^0.3.16",
