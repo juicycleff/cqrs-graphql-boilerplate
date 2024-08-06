@@ -127,9 +127,11 @@ mongod
   
 If you have docker installed  
 ```bash  
-docker run -d -p 27017:27017 mongo  
-docker run -d -p 1113:1113 -p 2113:2113 eventstore/eventstore --insecure # insecure flag specifies no certificate required - suitable for devmode 
-docker run -d -p 6379:6379 redis  
+docker run --name mongo -d -p 27017:27017 mongo  
+docker run --name eventstore -d -p 1113:1113 -p 2113:2113 eventstore/eventstore:release-5.0.8 --insecure # insecure flag specifies no certificate required - suitable for devmode 
+docker run --name redis -d -p 6379:6379 redis
+docker run --name consul -d -p 8400:8400 -p 8500:8500 -p 8600:53/udp hashicorp/consul agent -server -bootstrap -ui -client 0.0.0.0
+docker run --name nats -d -p 4222:4222 -p 6222:6222 -p 8222:8222 nats
 ```  
   
 Otherwise, you can install and run redis and eventstore locally if you choose.  
