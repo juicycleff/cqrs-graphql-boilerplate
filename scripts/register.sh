@@ -12,7 +12,8 @@ for PROJECT_DIR in ${PROJECTS} ; do
     continue
   fi
 
-  SVC_NAME=$(yq r ./"${PROJECT_DIR}"/${BOOTSTRAP_PATH} 'service.name' )
+  # SVC_NAME=$(yq r ./"${PROJECT_DIR}"/${BOOTSTRAP_PATH} 'service.name' )
+  SVC_NAME=$(yq e '.service.name' ./"${PROJECT_DIR}"/${BOOTSTRAP_PATH}) # for yq version 4 or higher, use this command
   echo "Registering ${SVC_NAME}"
 
   if [ ! -f "./${PROJECT_DIR}/${CONFIG_PATH}" ]; then
@@ -21,8 +22,11 @@ for PROJECT_DIR in ${PROJECTS} ; do
   fi
 
     echo "**** ${PROJECT_DIR}"
+    # consul kv put ultimatebackend/config/"${SVC_NAME}" \@./"${PROJECT_DIR}"/${CONFIG_PATH}
 
-  consul kv put ultimatebackend/config/"${SVC_NAME}" \@./"${PROJECT_DIR}"/${CONFIG_PATH}
+    # if you run consul in docker, use this command
+    CONFIG_CONTENT=$(cat ./"${PROJECT_DIR}"/"${CONFIG_PATH}")
+    docker exec consul consul kv put ultimatebackend/config/"${SVC_NAME}" "$CONFIG_CONTENT"
 done
 
 echo "Service Registration system completed"

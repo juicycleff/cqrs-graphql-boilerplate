@@ -2,6 +2,7 @@
 import { Observable } from 'rxjs';
 import { Writer, Reader } from 'protobufjs/minimal';
 
+
 export interface Auth {
   type: string;
   identifier: string;
@@ -157,61 +158,37 @@ const baseFindWebhookResponse: object = {
 };
 
 export interface WebhookService<Context extends DataLoaders> {
-  createWebhook(
-    request: CreateWebhookRequest,
-    ctx: Context,
-  ): Promise<CreateWebhookResponse>;
 
-  updateWebhook(
-    request: UpdateWebhookRequest,
-    ctx: Context,
-  ): Promise<UpdateWebhookResponse>;
+  createWebhook(request: CreateWebhookRequest, ctx: Context): Promise<CreateWebhookResponse>;
 
-  deleteWebhook(
-    request: DeleteWebhookRequest,
-    ctx: Context,
-  ): Promise<DeleteWebhookResponse>;
+  updateWebhook(request: UpdateWebhookRequest, ctx: Context): Promise<UpdateWebhookResponse>;
 
-  readWebhook(
-    request: ReadWebhookRequest,
-    ctx: Context,
-  ): Promise<ReadWebhookResponse>;
+  deleteWebhook(request: DeleteWebhookRequest, ctx: Context): Promise<DeleteWebhookResponse>;
 
-  findWebhook(
-    request: FindWebhookRequest,
-    ctx: Context,
-  ): Promise<FindWebhookResponse>;
+  readWebhook(request: ReadWebhookRequest, ctx: Context): Promise<ReadWebhookResponse>;
+
+  findWebhook(request: FindWebhookRequest, ctx: Context): Promise<FindWebhookResponse>;
+
 }
 
 export interface WebhookServiceClient<Context extends DataLoaders> {
-  createWebhook(
-    request: CreateWebhookRequest,
-    ctx?: Context,
-  ): Observable<CreateWebhookResponse>;
 
-  updateWebhook(
-    request: UpdateWebhookRequest,
-    ctx?: Context,
-  ): Observable<UpdateWebhookResponse>;
+  createWebhook(request: CreateWebhookRequest, ctx?: Context): Observable<CreateWebhookResponse>;
 
-  deleteWebhook(
-    request: DeleteWebhookRequest,
-    ctx?: Context,
-  ): Observable<DeleteWebhookResponse>;
+  updateWebhook(request: UpdateWebhookRequest, ctx?: Context): Observable<UpdateWebhookResponse>;
 
-  readWebhook(
-    request: ReadWebhookRequest,
-    ctx?: Context,
-  ): Observable<ReadWebhookResponse>;
+  deleteWebhook(request: DeleteWebhookRequest, ctx?: Context): Observable<DeleteWebhookResponse>;
 
-  findWebhook(
-    request: FindWebhookRequest,
-    ctx?: Context,
-  ): Observable<FindWebhookResponse>;
+  readWebhook(request: ReadWebhookRequest, ctx?: Context): Observable<ReadWebhookResponse>;
+
+  findWebhook(request: FindWebhookRequest, ctx?: Context): Observable<FindWebhookResponse>;
+
 }
 
 interface DataLoaders {
+
   getDataLoader<T>(identifier: string, constructorFn: () => T): T;
+
 }
 
 export const WebhookRequestType = {
@@ -223,19 +200,19 @@ export const WebhookRequestType = {
   fromJSON(object: any): WebhookRequestType {
     switch (object) {
       case 0:
-      case 'POST':
+      case "POST":
         return WebhookRequestType.POST;
       case 1:
-      case 'GET':
+      case "GET":
         return WebhookRequestType.GET;
       case 2:
-      case 'PUT':
+      case "PUT":
         return WebhookRequestType.PUT;
       case 3:
-      case 'DELETE':
+      case "DELETE":
         return WebhookRequestType.DELETE;
       case 4:
-      case 'PATCH':
+      case "PATCH":
         return WebhookRequestType.PATCH;
       default:
         throw new global.Error(`Invalid value ${object}`);
@@ -244,20 +221,20 @@ export const WebhookRequestType = {
   toJSON(object: WebhookRequestType): string {
     switch (object) {
       case WebhookRequestType.POST:
-        return 'POST';
+        return "POST";
       case WebhookRequestType.GET:
-        return 'GET';
+        return "GET";
       case WebhookRequestType.PUT:
-        return 'PUT';
+        return "PUT";
       case WebhookRequestType.DELETE:
-        return 'DELETE';
+        return "DELETE";
       case WebhookRequestType.PATCH:
-        return 'PATCH';
+        return "PATCH";
       default:
-        return 'UNKNOWN';
+        return "UNKNOWN";
     }
   },
-};
+}
 
 export type WebhookRequestType = 0 | 1 | 2 | 3 | 4;
 
@@ -270,19 +247,19 @@ export const WebhookAuthType = {
   fromJSON(object: any): WebhookAuthType {
     switch (object) {
       case 0:
-      case 'NONE':
+      case "NONE":
         return WebhookAuthType.NONE;
       case 1:
-      case 'BASIC':
+      case "BASIC":
         return WebhookAuthType.BASIC;
       case 2:
-      case 'API_KEY':
+      case "API_KEY":
         return WebhookAuthType.API_KEY;
       case 3:
-      case 'TOKEN':
+      case "TOKEN":
         return WebhookAuthType.TOKEN;
       case 4:
-      case 'OAUTH_2':
+      case "OAUTH_2":
         return WebhookAuthType.OAUTH_2;
       default:
         throw new global.Error(`Invalid value ${object}`);
@@ -291,20 +268,20 @@ export const WebhookAuthType = {
   toJSON(object: WebhookAuthType): string {
     switch (object) {
       case WebhookAuthType.NONE:
-        return 'NONE';
+        return "NONE";
       case WebhookAuthType.BASIC:
-        return 'BASIC';
+        return "BASIC";
       case WebhookAuthType.API_KEY:
-        return 'API_KEY';
+        return "API_KEY";
       case WebhookAuthType.TOKEN:
-        return 'TOKEN';
+        return "TOKEN";
       case WebhookAuthType.OAUTH_2:
-        return 'OAUTH_2';
+        return "OAUTH_2";
       default:
-        return 'UNKNOWN';
+        return "UNKNOWN";
     }
   },
-};
+}
 
 export type WebhookAuthType = 0 | 1 | 2 | 3 | 4;
 
@@ -314,10 +291,10 @@ export const ApiKeyField = {
   fromJSON(object: any): ApiKeyField {
     switch (object) {
       case 0:
-      case 'HEADER':
+      case "HEADER":
         return ApiKeyField.HEADER;
       case 1:
-      case 'PARAMS':
+      case "PARAMS":
         return ApiKeyField.PARAMS;
       default:
         throw new global.Error(`Invalid value ${object}`);
@@ -326,14 +303,14 @@ export const ApiKeyField = {
   toJSON(object: ApiKeyField): string {
     switch (object) {
       case ApiKeyField.HEADER:
-        return 'HEADER';
+        return "HEADER";
       case ApiKeyField.PARAMS:
-        return 'PARAMS';
+        return "PARAMS";
       default:
-        return 'UNKNOWN';
+        return "UNKNOWN";
     }
   },
-};
+}
 
 export type ApiKeyField = 0 | 1;
 
@@ -733,10 +710,7 @@ export const Webhook = {
 };
 
 export const CreateWebhookRequest = {
-  encode(
-    message: CreateWebhookRequest,
-    writer: Writer = Writer.create(),
-  ): Writer {
+  encode(message: CreateWebhookRequest, writer: Writer = Writer.create()): Writer {
     writer.uint32(10).string(message.name);
     writer.uint32(18).string(message.endpoint);
     writer.uint32(26).string(message.requestType);
@@ -747,9 +721,7 @@ export const CreateWebhookRequest = {
   },
   decode(reader: Reader, length?: number): CreateWebhookRequest {
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = Object.create(
-      baseCreateWebhookRequest,
-    ) as CreateWebhookRequest;
+    const message = Object.create(baseCreateWebhookRequest) as CreateWebhookRequest;
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -773,9 +745,7 @@ export const CreateWebhookRequest = {
     return message;
   },
   fromJSON(object: any): CreateWebhookRequest {
-    const message = Object.create(
-      baseCreateWebhookRequest,
-    ) as CreateWebhookRequest;
+    const message = Object.create(baseCreateWebhookRequest) as CreateWebhookRequest;
     if (object.name !== undefined && object.name !== null) {
       message.name = String(object.name);
     } else {
@@ -799,9 +769,7 @@ export const CreateWebhookRequest = {
     return message;
   },
   fromPartial(object: DeepPartial<CreateWebhookRequest>): CreateWebhookRequest {
-    const message = Object.create(
-      baseCreateWebhookRequest,
-    ) as CreateWebhookRequest;
+    const message = Object.create(baseCreateWebhookRequest) as CreateWebhookRequest;
     if (object.name !== undefined && object.name !== null) {
       message.name = object.name;
     } else {
@@ -835,10 +803,7 @@ export const CreateWebhookRequest = {
 };
 
 export const CreateWebhookResponse = {
-  encode(
-    message: CreateWebhookResponse,
-    writer: Writer = Writer.create(),
-  ): Writer {
+  encode(message: CreateWebhookResponse, writer: Writer = Writer.create()): Writer {
     if (message.webhook !== undefined && message.webhook !== undefined) {
       Webhook.encode(message.webhook, writer.uint32(10).fork()).ldelim();
     }
@@ -846,9 +811,7 @@ export const CreateWebhookResponse = {
   },
   decode(reader: Reader, length?: number): CreateWebhookResponse {
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = Object.create(
-      baseCreateWebhookResponse,
-    ) as CreateWebhookResponse;
+    const message = Object.create(baseCreateWebhookResponse) as CreateWebhookResponse;
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -863,9 +826,7 @@ export const CreateWebhookResponse = {
     return message;
   },
   fromJSON(object: any): CreateWebhookResponse {
-    const message = Object.create(
-      baseCreateWebhookResponse,
-    ) as CreateWebhookResponse;
+    const message = Object.create(baseCreateWebhookResponse) as CreateWebhookResponse;
     if (object.webhook !== undefined && object.webhook !== null) {
       message.webhook = Webhook.fromJSON(object.webhook);
     } else {
@@ -873,12 +834,8 @@ export const CreateWebhookResponse = {
     }
     return message;
   },
-  fromPartial(
-    object: DeepPartial<CreateWebhookResponse>,
-  ): CreateWebhookResponse {
-    const message = Object.create(
-      baseCreateWebhookResponse,
-    ) as CreateWebhookResponse;
+  fromPartial(object: DeepPartial<CreateWebhookResponse>): CreateWebhookResponse {
+    const message = Object.create(baseCreateWebhookResponse) as CreateWebhookResponse;
     if (object.webhook !== undefined && object.webhook !== null) {
       message.webhook = Webhook.fromPartial(object.webhook);
     } else {
@@ -894,10 +851,7 @@ export const CreateWebhookResponse = {
 };
 
 export const UpdateWebhookRequest = {
-  encode(
-    message: UpdateWebhookRequest,
-    writer: Writer = Writer.create(),
-  ): Writer {
+  encode(message: UpdateWebhookRequest, writer: Writer = Writer.create()): Writer {
     writer.uint32(42).string(message.id);
     writer.uint32(10).string(message.name);
     writer.uint32(18).string(message.endpoint);
@@ -909,9 +863,7 @@ export const UpdateWebhookRequest = {
   },
   decode(reader: Reader, length?: number): UpdateWebhookRequest {
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = Object.create(
-      baseUpdateWebhookRequest,
-    ) as UpdateWebhookRequest;
+    const message = Object.create(baseUpdateWebhookRequest) as UpdateWebhookRequest;
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -938,9 +890,7 @@ export const UpdateWebhookRequest = {
     return message;
   },
   fromJSON(object: any): UpdateWebhookRequest {
-    const message = Object.create(
-      baseUpdateWebhookRequest,
-    ) as UpdateWebhookRequest;
+    const message = Object.create(baseUpdateWebhookRequest) as UpdateWebhookRequest;
     if (object.id !== undefined && object.id !== null) {
       message.id = String(object.id);
     } else {
@@ -969,9 +919,7 @@ export const UpdateWebhookRequest = {
     return message;
   },
   fromPartial(object: DeepPartial<UpdateWebhookRequest>): UpdateWebhookRequest {
-    const message = Object.create(
-      baseUpdateWebhookRequest,
-    ) as UpdateWebhookRequest;
+    const message = Object.create(baseUpdateWebhookRequest) as UpdateWebhookRequest;
     if (object.id !== undefined && object.id !== null) {
       message.id = object.id;
     } else {
@@ -1011,10 +959,7 @@ export const UpdateWebhookRequest = {
 };
 
 export const UpdateWebhookResponse = {
-  encode(
-    message: UpdateWebhookResponse,
-    writer: Writer = Writer.create(),
-  ): Writer {
+  encode(message: UpdateWebhookResponse, writer: Writer = Writer.create()): Writer {
     if (message.webhook !== undefined && message.webhook !== undefined) {
       Webhook.encode(message.webhook, writer.uint32(10).fork()).ldelim();
     }
@@ -1022,9 +967,7 @@ export const UpdateWebhookResponse = {
   },
   decode(reader: Reader, length?: number): UpdateWebhookResponse {
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = Object.create(
-      baseUpdateWebhookResponse,
-    ) as UpdateWebhookResponse;
+    const message = Object.create(baseUpdateWebhookResponse) as UpdateWebhookResponse;
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -1039,9 +982,7 @@ export const UpdateWebhookResponse = {
     return message;
   },
   fromJSON(object: any): UpdateWebhookResponse {
-    const message = Object.create(
-      baseUpdateWebhookResponse,
-    ) as UpdateWebhookResponse;
+    const message = Object.create(baseUpdateWebhookResponse) as UpdateWebhookResponse;
     if (object.webhook !== undefined && object.webhook !== null) {
       message.webhook = Webhook.fromJSON(object.webhook);
     } else {
@@ -1049,12 +990,8 @@ export const UpdateWebhookResponse = {
     }
     return message;
   },
-  fromPartial(
-    object: DeepPartial<UpdateWebhookResponse>,
-  ): UpdateWebhookResponse {
-    const message = Object.create(
-      baseUpdateWebhookResponse,
-    ) as UpdateWebhookResponse;
+  fromPartial(object: DeepPartial<UpdateWebhookResponse>): UpdateWebhookResponse {
+    const message = Object.create(baseUpdateWebhookResponse) as UpdateWebhookResponse;
     if (object.webhook !== undefined && object.webhook !== null) {
       message.webhook = Webhook.fromPartial(object.webhook);
     } else {
@@ -1070,18 +1007,13 @@ export const UpdateWebhookResponse = {
 };
 
 export const DeleteWebhookRequest = {
-  encode(
-    message: DeleteWebhookRequest,
-    writer: Writer = Writer.create(),
-  ): Writer {
+  encode(message: DeleteWebhookRequest, writer: Writer = Writer.create()): Writer {
     writer.uint32(10).string(message.id);
     return writer;
   },
   decode(reader: Reader, length?: number): DeleteWebhookRequest {
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = Object.create(
-      baseDeleteWebhookRequest,
-    ) as DeleteWebhookRequest;
+    const message = Object.create(baseDeleteWebhookRequest) as DeleteWebhookRequest;
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -1096,9 +1028,7 @@ export const DeleteWebhookRequest = {
     return message;
   },
   fromJSON(object: any): DeleteWebhookRequest {
-    const message = Object.create(
-      baseDeleteWebhookRequest,
-    ) as DeleteWebhookRequest;
+    const message = Object.create(baseDeleteWebhookRequest) as DeleteWebhookRequest;
     if (object.id !== undefined && object.id !== null) {
       message.id = String(object.id);
     } else {
@@ -1107,9 +1037,7 @@ export const DeleteWebhookRequest = {
     return message;
   },
   fromPartial(object: DeepPartial<DeleteWebhookRequest>): DeleteWebhookRequest {
-    const message = Object.create(
-      baseDeleteWebhookRequest,
-    ) as DeleteWebhookRequest;
+    const message = Object.create(baseDeleteWebhookRequest) as DeleteWebhookRequest;
     if (object.id !== undefined && object.id !== null) {
       message.id = object.id;
     } else {
@@ -1125,10 +1053,7 @@ export const DeleteWebhookRequest = {
 };
 
 export const DeleteWebhookResponse = {
-  encode(
-    message: DeleteWebhookResponse,
-    writer: Writer = Writer.create(),
-  ): Writer {
+  encode(message: DeleteWebhookResponse, writer: Writer = Writer.create()): Writer {
     if (message.webhook !== undefined && message.webhook !== undefined) {
       Webhook.encode(message.webhook, writer.uint32(10).fork()).ldelim();
     }
@@ -1136,9 +1061,7 @@ export const DeleteWebhookResponse = {
   },
   decode(reader: Reader, length?: number): DeleteWebhookResponse {
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = Object.create(
-      baseDeleteWebhookResponse,
-    ) as DeleteWebhookResponse;
+    const message = Object.create(baseDeleteWebhookResponse) as DeleteWebhookResponse;
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -1153,9 +1076,7 @@ export const DeleteWebhookResponse = {
     return message;
   },
   fromJSON(object: any): DeleteWebhookResponse {
-    const message = Object.create(
-      baseDeleteWebhookResponse,
-    ) as DeleteWebhookResponse;
+    const message = Object.create(baseDeleteWebhookResponse) as DeleteWebhookResponse;
     if (object.webhook !== undefined && object.webhook !== null) {
       message.webhook = Webhook.fromJSON(object.webhook);
     } else {
@@ -1163,12 +1084,8 @@ export const DeleteWebhookResponse = {
     }
     return message;
   },
-  fromPartial(
-    object: DeepPartial<DeleteWebhookResponse>,
-  ): DeleteWebhookResponse {
-    const message = Object.create(
-      baseDeleteWebhookResponse,
-    ) as DeleteWebhookResponse;
+  fromPartial(object: DeepPartial<DeleteWebhookResponse>): DeleteWebhookResponse {
+    const message = Object.create(baseDeleteWebhookResponse) as DeleteWebhookResponse;
     if (object.webhook !== undefined && object.webhook !== null) {
       message.webhook = Webhook.fromPartial(object.webhook);
     } else {
@@ -1184,10 +1101,7 @@ export const DeleteWebhookResponse = {
 };
 
 export const ReadWebhookRequest = {
-  encode(
-    message: ReadWebhookRequest,
-    writer: Writer = Writer.create(),
-  ): Writer {
+  encode(message: ReadWebhookRequest, writer: Writer = Writer.create()): Writer {
     writer.uint32(10).string(message.id);
     return writer;
   },
@@ -1233,10 +1147,7 @@ export const ReadWebhookRequest = {
 };
 
 export const ReadWebhookResponse = {
-  encode(
-    message: ReadWebhookResponse,
-    writer: Writer = Writer.create(),
-  ): Writer {
+  encode(message: ReadWebhookResponse, writer: Writer = Writer.create()): Writer {
     if (message.webhook !== undefined && message.webhook !== undefined) {
       Webhook.encode(message.webhook, writer.uint32(10).fork()).ldelim();
     }
@@ -1244,9 +1155,7 @@ export const ReadWebhookResponse = {
   },
   decode(reader: Reader, length?: number): ReadWebhookResponse {
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = Object.create(
-      baseReadWebhookResponse,
-    ) as ReadWebhookResponse;
+    const message = Object.create(baseReadWebhookResponse) as ReadWebhookResponse;
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -1261,9 +1170,7 @@ export const ReadWebhookResponse = {
     return message;
   },
   fromJSON(object: any): ReadWebhookResponse {
-    const message = Object.create(
-      baseReadWebhookResponse,
-    ) as ReadWebhookResponse;
+    const message = Object.create(baseReadWebhookResponse) as ReadWebhookResponse;
     if (object.webhook !== undefined && object.webhook !== null) {
       message.webhook = Webhook.fromJSON(object.webhook);
     } else {
@@ -1272,9 +1179,7 @@ export const ReadWebhookResponse = {
     return message;
   },
   fromPartial(object: DeepPartial<ReadWebhookResponse>): ReadWebhookResponse {
-    const message = Object.create(
-      baseReadWebhookResponse,
-    ) as ReadWebhookResponse;
+    const message = Object.create(baseReadWebhookResponse) as ReadWebhookResponse;
     if (object.webhook !== undefined && object.webhook !== null) {
       message.webhook = Webhook.fromPartial(object.webhook);
     } else {
@@ -1290,10 +1195,7 @@ export const ReadWebhookResponse = {
 };
 
 export const FindWebhookRequest = {
-  encode(
-    message: FindWebhookRequest,
-    writer: Writer = Writer.create(),
-  ): Writer {
+  encode(message: FindWebhookRequest, writer: Writer = Writer.create()): Writer {
     writer.uint32(10).string(message.filter);
     if (message.paginate !== undefined && message.paginate !== undefined) {
       Paginate.encode(message.paginate, writer.uint32(18).fork()).ldelim();
@@ -1350,18 +1252,13 @@ export const FindWebhookRequest = {
   toJSON(message: FindWebhookRequest): unknown {
     const obj: any = {};
     obj.filter = message.filter || '';
-    obj.paginate = message.paginate
-      ? Paginate.toJSON(message.paginate)
-      : undefined;
+    obj.paginate = message.paginate ? Paginate.toJSON(message.paginate) : undefined;
     return obj;
   },
 };
 
 export const FindWebhookResponse = {
-  encode(
-    message: FindWebhookResponse,
-    writer: Writer = Writer.create(),
-  ): Writer {
+  encode(message: FindWebhookResponse, writer: Writer = Writer.create()): Writer {
     for (const v of message.webhooks) {
       Webhook.encode(v!, writer.uint32(10).fork()).ldelim();
     }
@@ -1369,9 +1266,7 @@ export const FindWebhookResponse = {
   },
   decode(reader: Reader, length?: number): FindWebhookResponse {
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = Object.create(
-      baseFindWebhookResponse,
-    ) as FindWebhookResponse;
+    const message = Object.create(baseFindWebhookResponse) as FindWebhookResponse;
     message.webhooks = [];
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -1387,9 +1282,7 @@ export const FindWebhookResponse = {
     return message;
   },
   fromJSON(object: any): FindWebhookResponse {
-    const message = Object.create(
-      baseFindWebhookResponse,
-    ) as FindWebhookResponse;
+    const message = Object.create(baseFindWebhookResponse) as FindWebhookResponse;
     message.webhooks = [];
     if (object.webhooks !== undefined && object.webhooks !== null) {
       for (const e of object.webhooks) {
@@ -1399,9 +1292,7 @@ export const FindWebhookResponse = {
     return message;
   },
   fromPartial(object: DeepPartial<FindWebhookResponse>): FindWebhookResponse {
-    const message = Object.create(
-      baseFindWebhookResponse,
-    ) as FindWebhookResponse;
+    const message = Object.create(baseFindWebhookResponse) as FindWebhookResponse;
     message.webhooks = [];
     if (object.webhooks !== undefined && object.webhooks !== null) {
       for (const e of object.webhooks) {
@@ -1413,9 +1304,7 @@ export const FindWebhookResponse = {
   toJSON(message: FindWebhookResponse): unknown {
     const obj: any = {};
     if (message.webhooks) {
-      obj.webhooks = message.webhooks.map((e) =>
-        e ? Webhook.toJSON(e) : undefined,
-      );
+      obj.webhooks = message.webhooks.map(e => e ? Webhook.toJSON(e) : undefined);
     } else {
       obj.webhooks = [];
     }
@@ -1425,14 +1314,14 @@ export const FindWebhookResponse = {
 
 type DeepPartial<T> = {
   [P in keyof T]?: T[P] extends Array<infer U>
-    ? Array<DeepPartial<U>>
-    : T[P] extends ReadonlyArray<infer U>
-    ? ReadonlyArray<DeepPartial<U>>
-    : T[P] extends Date | Function | Uint8Array | undefined
-    ? T[P]
-    : T[P] extends infer U | undefined
-    ? DeepPartial<U>
-    : T[P] extends object
-    ? DeepPartial<T[P]>
-    : T[P];
+  ? Array<DeepPartial<U>>
+  : T[P] extends ReadonlyArray<infer U>
+  ? ReadonlyArray<DeepPartial<U>>
+  : T[P] extends Date | Function | Uint8Array | undefined
+  ? T[P]
+  : T[P] extends infer U | undefined
+  ? DeepPartial<U>
+  : T[P] extends object
+  ? DeepPartial<T[P]>
+  : T[P]
 };

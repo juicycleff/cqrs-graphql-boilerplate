@@ -2,6 +2,7 @@
 import { Observable } from 'rxjs';
 import { Writer, Reader } from 'protobufjs/minimal';
 
+
 export interface Tenant {
   /**
    *  @inject_tag: bson:"_id,omitempty"
@@ -466,143 +467,77 @@ const baseAcceptMemberInvitationResponse: object = {
 };
 
 export interface TenantService<Context extends DataLoaders> {
+
   /**
    *  Tenants
    */
-  createTenant(
-    request: CreateTenantRequest,
-    ctx: Context,
-  ): Promise<CreateTenantResponse>;
+  createTenant(request: CreateTenantRequest, ctx: Context): Promise<CreateTenantResponse>;
 
-  readTenant(
-    request: ReadTenantRequest,
-    ctx: Context,
-  ): Promise<ReadTenantResponse>;
+  readTenant(request: ReadTenantRequest, ctx: Context): Promise<ReadTenantResponse>;
 
-  findTenant(
-    request: FindTenantRequest,
-    ctx: Context,
-  ): Promise<FindTenantResponse>;
+  findTenant(request: FindTenantRequest, ctx: Context): Promise<FindTenantResponse>;
 
-  updateTenant(
-    request: UpdateTenantRequest,
-    ctx: Context,
-  ): Promise<UpdateTenantResponse>;
+  updateTenant(request: UpdateTenantRequest, ctx: Context): Promise<UpdateTenantResponse>;
 
-  deleteTenant(
-    request: DeleteTenantRequest,
-    ctx: Context,
-  ): Promise<DeleteTenantResponse>;
+  deleteTenant(request: DeleteTenantRequest, ctx: Context): Promise<DeleteTenantResponse>;
 
-  tenantAvailable(
-    request: TenantAvailableRequest,
-    ctx: Context,
-  ): Promise<TenantAvailableResponse>;
+  tenantAvailable(request: TenantAvailableRequest, ctx: Context): Promise<TenantAvailableResponse>;
 
   /**
    *  Members
    */
-  inviteMember(
-    request: InviteMemberRequest,
-    ctx: Context,
-  ): Promise<InviteMemberResponse>;
+  inviteMember(request: InviteMemberRequest, ctx: Context): Promise<InviteMemberResponse>;
 
-  acceptMemberInvitation(
-    request: AcceptMemberInvitationRequest,
-    ctx: Context,
-  ): Promise<AcceptMemberInvitationResponse>;
+  acceptMemberInvitation(request: AcceptMemberInvitationRequest, ctx: Context): Promise<AcceptMemberInvitationResponse>;
 
-  updateMember(
-    request: UpdateMemberRequest,
-    ctx: Context,
-  ): Promise<UpdateMemberResponse>;
+  updateMember(request: UpdateMemberRequest, ctx: Context): Promise<UpdateMemberResponse>;
 
-  deleteMember(
-    request: DeleteMemberRequest,
-    ctx: Context,
-  ): Promise<DeleteMemberResponse>;
+  deleteMember(request: DeleteMemberRequest, ctx: Context): Promise<DeleteMemberResponse>;
 
-  readMember(
-    request: ReadMemberRequest,
-    ctx: Context,
-  ): Promise<ReadMemberResponse>;
+  readMember(request: ReadMemberRequest, ctx: Context): Promise<ReadMemberResponse>;
 
-  findMembers(
-    request: FindMemberRequest,
-    ctx: Context,
-  ): Promise<FindMemberResponse>;
+  findMembers(request: FindMemberRequest, ctx: Context): Promise<FindMemberResponse>;
+
 }
 
 export interface TenantServiceClient<Context extends DataLoaders> {
+
   /**
    *  Tenants
    */
-  createTenant(
-    request: CreateTenantRequest,
-    ctx?: Context,
-  ): Observable<CreateTenantResponse>;
+  createTenant(request: CreateTenantRequest, ctx?: Context): Observable<CreateTenantResponse>;
 
-  readTenant(
-    request: ReadTenantRequest,
-    ctx?: Context,
-  ): Observable<ReadTenantResponse>;
+  readTenant(request: ReadTenantRequest, ctx?: Context): Observable<ReadTenantResponse>;
 
-  findTenant(
-    request: FindTenantRequest,
-    ctx?: Context,
-  ): Observable<FindTenantResponse>;
+  findTenant(request: FindTenantRequest, ctx?: Context): Observable<FindTenantResponse>;
 
-  updateTenant(
-    request: UpdateTenantRequest,
-    ctx?: Context,
-  ): Observable<UpdateTenantResponse>;
+  updateTenant(request: UpdateTenantRequest, ctx?: Context): Observable<UpdateTenantResponse>;
 
-  deleteTenant(
-    request: DeleteTenantRequest,
-    ctx?: Context,
-  ): Observable<DeleteTenantResponse>;
+  deleteTenant(request: DeleteTenantRequest, ctx?: Context): Observable<DeleteTenantResponse>;
 
-  tenantAvailable(
-    request: TenantAvailableRequest,
-    ctx?: Context,
-  ): Observable<TenantAvailableResponse>;
+  tenantAvailable(request: TenantAvailableRequest, ctx?: Context): Observable<TenantAvailableResponse>;
 
   /**
    *  Members
    */
-  inviteMember(
-    request: InviteMemberRequest,
-    ctx?: Context,
-  ): Observable<InviteMemberResponse>;
+  inviteMember(request: InviteMemberRequest, ctx?: Context): Observable<InviteMemberResponse>;
 
-  acceptMemberInvitation(
-    request: AcceptMemberInvitationRequest,
-    ctx?: Context,
-  ): Observable<AcceptMemberInvitationResponse>;
+  acceptMemberInvitation(request: AcceptMemberInvitationRequest, ctx?: Context): Observable<AcceptMemberInvitationResponse>;
 
-  updateMember(
-    request: UpdateMemberRequest,
-    ctx?: Context,
-  ): Observable<UpdateMemberResponse>;
+  updateMember(request: UpdateMemberRequest, ctx?: Context): Observable<UpdateMemberResponse>;
 
-  deleteMember(
-    request: DeleteMemberRequest,
-    ctx?: Context,
-  ): Observable<DeleteMemberResponse>;
+  deleteMember(request: DeleteMemberRequest, ctx?: Context): Observable<DeleteMemberResponse>;
 
-  readMember(
-    request: ReadMemberRequest,
-    ctx?: Context,
-  ): Observable<ReadMemberResponse>;
+  readMember(request: ReadMemberRequest, ctx?: Context): Observable<ReadMemberResponse>;
 
-  findMembers(
-    request: FindMemberRequest,
-    ctx?: Context,
-  ): Observable<FindMemberResponse>;
+  findMembers(request: FindMemberRequest, ctx?: Context): Observable<FindMemberResponse>;
+
 }
 
 interface DataLoaders {
+
   getDataLoader<T>(identifier: string, constructorFn: () => T): T;
+
 }
 
 export const InvitationStatus = {
@@ -614,13 +549,13 @@ export const InvitationStatus = {
   fromJSON(object: any): InvitationStatus {
     switch (object) {
       case 0:
-      case 'PENDING':
+      case "PENDING":
         return InvitationStatus.PENDING;
       case 1:
-      case 'ACCEPTED':
+      case "ACCEPTED":
         return InvitationStatus.ACCEPTED;
       case 2:
-      case 'REJECTED':
+      case "REJECTED":
         return InvitationStatus.REJECTED;
       default:
         throw new global.Error(`Invalid value ${object}`);
@@ -629,16 +564,16 @@ export const InvitationStatus = {
   toJSON(object: InvitationStatus): string {
     switch (object) {
       case InvitationStatus.PENDING:
-        return 'PENDING';
+        return "PENDING";
       case InvitationStatus.ACCEPTED:
-        return 'ACCEPTED';
+        return "ACCEPTED";
       case InvitationStatus.REJECTED:
-        return 'REJECTED';
+        return "REJECTED";
       default:
-        return 'UNKNOWN';
+        return "UNKNOWN";
     }
   },
-};
+}
 
 export type InvitationStatus = 0 | 1 | 2;
 
@@ -660,10 +595,7 @@ export const Tenant = {
       Settings.encode(message.settings, writer.uint32(74).fork()).ldelim();
     }
     if (message.billing !== undefined && message.billing !== undefined) {
-      BillingSettings.encode(
-        message.billing,
-        writer.uint32(82).fork(),
-      ).ldelim();
+      BillingSettings.encode(message.billing, writer.uint32(82).fork()).ldelim();
     }
     writer.uint32(88).int32(message.totalPoints);
     return writer;
@@ -844,9 +776,7 @@ export const Tenant = {
     obj.normalizedName = message.normalizedName || '';
     obj.name = message.name || '';
     if (message.tokens) {
-      obj.tokens = message.tokens.map((e) =>
-        e ? TenantAccess.toJSON(e) : undefined,
-      );
+      obj.tokens = message.tokens.map(e => e ? TenantAccess.toJSON(e) : undefined);
     } else {
       obj.tokens = [];
     }
@@ -854,28 +784,19 @@ export const Tenant = {
     obj.createdAt = message.createdAt || '';
     obj.updatedAt = message.updatedAt || '';
     if (message.members) {
-      obj.members = message.members.map((e) =>
-        e ? Member.toJSON(e) : undefined,
-      );
+      obj.members = message.members.map(e => e ? Member.toJSON(e) : undefined);
     } else {
       obj.members = [];
     }
-    obj.settings = message.settings
-      ? Settings.toJSON(message.settings)
-      : undefined;
-    obj.billing = message.billing
-      ? BillingSettings.toJSON(message.billing)
-      : undefined;
+    obj.settings = message.settings ? Settings.toJSON(message.settings) : undefined;
+    obj.billing = message.billing ? BillingSettings.toJSON(message.billing) : undefined;
     obj.totalPoints = message.totalPoints || 0;
     return obj;
   },
 };
 
 export const UpdateTenantPayload = {
-  encode(
-    message: UpdateTenantPayload,
-    writer: Writer = Writer.create(),
-  ): Writer {
+  encode(message: UpdateTenantPayload, writer: Writer = Writer.create()): Writer {
     writer.uint32(26).string(message.name);
     if (message.settings !== undefined && message.settings !== undefined) {
       Settings.encode(message.settings, writer.uint32(74).fork()).ldelim();
@@ -884,9 +805,7 @@ export const UpdateTenantPayload = {
   },
   decode(reader: Reader, length?: number): UpdateTenantPayload {
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = Object.create(
-      baseUpdateTenantPayload,
-    ) as UpdateTenantPayload;
+    const message = Object.create(baseUpdateTenantPayload) as UpdateTenantPayload;
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -904,9 +823,7 @@ export const UpdateTenantPayload = {
     return message;
   },
   fromJSON(object: any): UpdateTenantPayload {
-    const message = Object.create(
-      baseUpdateTenantPayload,
-    ) as UpdateTenantPayload;
+    const message = Object.create(baseUpdateTenantPayload) as UpdateTenantPayload;
     if (object.name !== undefined && object.name !== null) {
       message.name = String(object.name);
     } else {
@@ -920,9 +837,7 @@ export const UpdateTenantPayload = {
     return message;
   },
   fromPartial(object: DeepPartial<UpdateTenantPayload>): UpdateTenantPayload {
-    const message = Object.create(
-      baseUpdateTenantPayload,
-    ) as UpdateTenantPayload;
+    const message = Object.create(baseUpdateTenantPayload) as UpdateTenantPayload;
     if (object.name !== undefined && object.name !== null) {
       message.name = object.name;
     } else {
@@ -938,9 +853,7 @@ export const UpdateTenantPayload = {
   toJSON(message: UpdateTenantPayload): unknown {
     const obj: any = {};
     obj.name = message.name || '';
-    obj.settings = message.settings
-      ? Settings.toJSON(message.settings)
-      : undefined;
+    obj.settings = message.settings ? Settings.toJSON(message.settings) : undefined;
     return obj;
   },
 };
@@ -1068,10 +981,7 @@ export const BillingSettings = {
     } else {
       message.currentPlan = '';
     }
-    if (
-      object.currentSubscription !== undefined &&
-      object.currentSubscription !== null
-    ) {
+    if (object.currentSubscription !== undefined && object.currentSubscription !== null) {
       message.currentSubscription = String(object.currentSubscription);
     } else {
       message.currentSubscription = '';
@@ -1085,10 +995,7 @@ export const BillingSettings = {
     } else {
       message.currentPlan = '';
     }
-    if (
-      object.currentSubscription !== undefined &&
-      object.currentSubscription !== null
-    ) {
+    if (object.currentSubscription !== undefined && object.currentSubscription !== null) {
       message.currentSubscription = object.currentSubscription;
     } else {
       message.currentSubscription = '';
@@ -1104,10 +1011,7 @@ export const BillingSettings = {
 };
 
 export const ConnectionSettings = {
-  encode(
-    message: ConnectionSettings,
-    writer: Writer = Writer.create(),
-  ): Writer {
+  encode(message: ConnectionSettings, writer: Writer = Writer.create()): Writer {
     writer.uint32(10).string(message.host);
     return writer;
   },
@@ -1247,10 +1151,7 @@ export const Settings = {
   encode(message: Settings, writer: Writer = Writer.create()): Writer {
     writer.uint32(8).bool(message.showStatusIcon);
     if (message.connection !== undefined && message.connection !== undefined) {
-      ConnectionSettings.encode(
-        message.connection,
-        writer.uint32(18).fork(),
-      ).ldelim();
+      ConnectionSettings.encode(message.connection, writer.uint32(18).fork()).ldelim();
     }
     if (message.mqtt !== undefined && message.mqtt !== undefined) {
       IotSubSettings.encode(message.mqtt, writer.uint32(26).fork()).ldelim();
@@ -1267,10 +1168,7 @@ export const Settings = {
           message.showStatusIcon = reader.bool();
           break;
         case 2:
-          message.connection = ConnectionSettings.decode(
-            reader,
-            reader.uint32(),
-          );
+          message.connection = ConnectionSettings.decode(reader, reader.uint32());
           break;
         case 3:
           message.mqtt = IotSubSettings.decode(reader, reader.uint32());
@@ -1323,9 +1221,7 @@ export const Settings = {
   toJSON(message: Settings): unknown {
     const obj: any = {};
     obj.showStatusIcon = message.showStatusIcon || false;
-    obj.connection = message.connection
-      ? ConnectionSettings.toJSON(message.connection)
-      : undefined;
+    obj.connection = message.connection ? ConnectionSettings.toJSON(message.connection) : undefined;
     obj.mqtt = message.mqtt ? IotSubSettings.toJSON(message.mqtt) : undefined;
     return obj;
   },
@@ -1468,10 +1364,7 @@ export const Member = {
 };
 
 export const CreateTenantRequest = {
-  encode(
-    message: CreateTenantRequest,
-    writer: Writer = Writer.create(),
-  ): Writer {
+  encode(message: CreateTenantRequest, writer: Writer = Writer.create()): Writer {
     writer.uint32(10).string(message.name);
     writer.uint32(18).string(message.planId);
     writer.uint32(26).string(message.couponId);
@@ -1480,9 +1373,7 @@ export const CreateTenantRequest = {
   },
   decode(reader: Reader, length?: number): CreateTenantRequest {
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = Object.create(
-      baseCreateTenantRequest,
-    ) as CreateTenantRequest;
+    const message = Object.create(baseCreateTenantRequest) as CreateTenantRequest;
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -1506,9 +1397,7 @@ export const CreateTenantRequest = {
     return message;
   },
   fromJSON(object: any): CreateTenantRequest {
-    const message = Object.create(
-      baseCreateTenantRequest,
-    ) as CreateTenantRequest;
+    const message = Object.create(baseCreateTenantRequest) as CreateTenantRequest;
     if (object.name !== undefined && object.name !== null) {
       message.name = String(object.name);
     } else {
@@ -1532,9 +1421,7 @@ export const CreateTenantRequest = {
     return message;
   },
   fromPartial(object: DeepPartial<CreateTenantRequest>): CreateTenantRequest {
-    const message = Object.create(
-      baseCreateTenantRequest,
-    ) as CreateTenantRequest;
+    const message = Object.create(baseCreateTenantRequest) as CreateTenantRequest;
     if (object.name !== undefined && object.name !== null) {
       message.name = object.name;
     } else {
@@ -1568,10 +1455,7 @@ export const CreateTenantRequest = {
 };
 
 export const CreateTenantResponse = {
-  encode(
-    message: CreateTenantResponse,
-    writer: Writer = Writer.create(),
-  ): Writer {
+  encode(message: CreateTenantResponse, writer: Writer = Writer.create()): Writer {
     if (message.tenant !== undefined && message.tenant !== undefined) {
       Tenant.encode(message.tenant, writer.uint32(10).fork()).ldelim();
     }
@@ -1579,9 +1463,7 @@ export const CreateTenantResponse = {
   },
   decode(reader: Reader, length?: number): CreateTenantResponse {
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = Object.create(
-      baseCreateTenantResponse,
-    ) as CreateTenantResponse;
+    const message = Object.create(baseCreateTenantResponse) as CreateTenantResponse;
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -1596,9 +1478,7 @@ export const CreateTenantResponse = {
     return message;
   },
   fromJSON(object: any): CreateTenantResponse {
-    const message = Object.create(
-      baseCreateTenantResponse,
-    ) as CreateTenantResponse;
+    const message = Object.create(baseCreateTenantResponse) as CreateTenantResponse;
     if (object.tenant !== undefined && object.tenant !== null) {
       message.tenant = Tenant.fromJSON(object.tenant);
     } else {
@@ -1607,9 +1487,7 @@ export const CreateTenantResponse = {
     return message;
   },
   fromPartial(object: DeepPartial<CreateTenantResponse>): CreateTenantResponse {
-    const message = Object.create(
-      baseCreateTenantResponse,
-    ) as CreateTenantResponse;
+    const message = Object.create(baseCreateTenantResponse) as CreateTenantResponse;
     if (object.tenant !== undefined && object.tenant !== null) {
       message.tenant = Tenant.fromPartial(object.tenant);
     } else {
@@ -1671,18 +1549,13 @@ export const FindTenantRequest = {
 };
 
 export const TenantAvailableRequest = {
-  encode(
-    message: TenantAvailableRequest,
-    writer: Writer = Writer.create(),
-  ): Writer {
+  encode(message: TenantAvailableRequest, writer: Writer = Writer.create()): Writer {
     writer.uint32(10).string(message.identifier);
     return writer;
   },
   decode(reader: Reader, length?: number): TenantAvailableRequest {
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = Object.create(
-      baseTenantAvailableRequest,
-    ) as TenantAvailableRequest;
+    const message = Object.create(baseTenantAvailableRequest) as TenantAvailableRequest;
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -1697,9 +1570,7 @@ export const TenantAvailableRequest = {
     return message;
   },
   fromJSON(object: any): TenantAvailableRequest {
-    const message = Object.create(
-      baseTenantAvailableRequest,
-    ) as TenantAvailableRequest;
+    const message = Object.create(baseTenantAvailableRequest) as TenantAvailableRequest;
     if (object.identifier !== undefined && object.identifier !== null) {
       message.identifier = String(object.identifier);
     } else {
@@ -1707,12 +1578,8 @@ export const TenantAvailableRequest = {
     }
     return message;
   },
-  fromPartial(
-    object: DeepPartial<TenantAvailableRequest>,
-  ): TenantAvailableRequest {
-    const message = Object.create(
-      baseTenantAvailableRequest,
-    ) as TenantAvailableRequest;
+  fromPartial(object: DeepPartial<TenantAvailableRequest>): TenantAvailableRequest {
+    const message = Object.create(baseTenantAvailableRequest) as TenantAvailableRequest;
     if (object.identifier !== undefined && object.identifier !== null) {
       message.identifier = object.identifier;
     } else {
@@ -1728,18 +1595,13 @@ export const TenantAvailableRequest = {
 };
 
 export const TenantAvailableResponse = {
-  encode(
-    message: TenantAvailableResponse,
-    writer: Writer = Writer.create(),
-  ): Writer {
+  encode(message: TenantAvailableResponse, writer: Writer = Writer.create()): Writer {
     writer.uint32(8).bool(message.available);
     return writer;
   },
   decode(reader: Reader, length?: number): TenantAvailableResponse {
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = Object.create(
-      baseTenantAvailableResponse,
-    ) as TenantAvailableResponse;
+    const message = Object.create(baseTenantAvailableResponse) as TenantAvailableResponse;
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -1754,9 +1616,7 @@ export const TenantAvailableResponse = {
     return message;
   },
   fromJSON(object: any): TenantAvailableResponse {
-    const message = Object.create(
-      baseTenantAvailableResponse,
-    ) as TenantAvailableResponse;
+    const message = Object.create(baseTenantAvailableResponse) as TenantAvailableResponse;
     if (object.available !== undefined && object.available !== null) {
       message.available = Boolean(object.available);
     } else {
@@ -1764,12 +1624,8 @@ export const TenantAvailableResponse = {
     }
     return message;
   },
-  fromPartial(
-    object: DeepPartial<TenantAvailableResponse>,
-  ): TenantAvailableResponse {
-    const message = Object.create(
-      baseTenantAvailableResponse,
-    ) as TenantAvailableResponse;
+  fromPartial(object: DeepPartial<TenantAvailableResponse>): TenantAvailableResponse {
+    const message = Object.create(baseTenantAvailableResponse) as TenantAvailableResponse;
     if (object.available !== undefined && object.available !== null) {
       message.available = object.available;
     } else {
@@ -1785,10 +1641,7 @@ export const TenantAvailableResponse = {
 };
 
 export const FindTenantResponse = {
-  encode(
-    message: FindTenantResponse,
-    writer: Writer = Writer.create(),
-  ): Writer {
+  encode(message: FindTenantResponse, writer: Writer = Writer.create()): Writer {
     for (const v of message.tenants) {
       Tenant.encode(v!, writer.uint32(10).fork()).ldelim();
     }
@@ -1834,9 +1687,7 @@ export const FindTenantResponse = {
   toJSON(message: FindTenantResponse): unknown {
     const obj: any = {};
     if (message.tenants) {
-      obj.tenants = message.tenants.map((e) =>
-        e ? Tenant.toJSON(e) : undefined,
-      );
+      obj.tenants = message.tenants.map(e => e ? Tenant.toJSON(e) : undefined);
     } else {
       obj.tenants = [];
     }
@@ -1845,18 +1696,13 @@ export const FindTenantResponse = {
 };
 
 export const DeleteTenantRequest = {
-  encode(
-    message: DeleteTenantRequest,
-    writer: Writer = Writer.create(),
-  ): Writer {
+  encode(message: DeleteTenantRequest, writer: Writer = Writer.create()): Writer {
     writer.uint32(10).string(message.id);
     return writer;
   },
   decode(reader: Reader, length?: number): DeleteTenantRequest {
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = Object.create(
-      baseDeleteTenantRequest,
-    ) as DeleteTenantRequest;
+    const message = Object.create(baseDeleteTenantRequest) as DeleteTenantRequest;
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -1871,9 +1717,7 @@ export const DeleteTenantRequest = {
     return message;
   },
   fromJSON(object: any): DeleteTenantRequest {
-    const message = Object.create(
-      baseDeleteTenantRequest,
-    ) as DeleteTenantRequest;
+    const message = Object.create(baseDeleteTenantRequest) as DeleteTenantRequest;
     if (object.id !== undefined && object.id !== null) {
       message.id = String(object.id);
     } else {
@@ -1882,9 +1726,7 @@ export const DeleteTenantRequest = {
     return message;
   },
   fromPartial(object: DeepPartial<DeleteTenantRequest>): DeleteTenantRequest {
-    const message = Object.create(
-      baseDeleteTenantRequest,
-    ) as DeleteTenantRequest;
+    const message = Object.create(baseDeleteTenantRequest) as DeleteTenantRequest;
     if (object.id !== undefined && object.id !== null) {
       message.id = object.id;
     } else {
@@ -1900,10 +1742,7 @@ export const DeleteTenantRequest = {
 };
 
 export const DeleteTenantResponse = {
-  encode(
-    message: DeleteTenantResponse,
-    writer: Writer = Writer.create(),
-  ): Writer {
+  encode(message: DeleteTenantResponse, writer: Writer = Writer.create()): Writer {
     if (message.tenant !== undefined && message.tenant !== undefined) {
       Tenant.encode(message.tenant, writer.uint32(10).fork()).ldelim();
     }
@@ -1911,9 +1750,7 @@ export const DeleteTenantResponse = {
   },
   decode(reader: Reader, length?: number): DeleteTenantResponse {
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = Object.create(
-      baseDeleteTenantResponse,
-    ) as DeleteTenantResponse;
+    const message = Object.create(baseDeleteTenantResponse) as DeleteTenantResponse;
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -1928,9 +1765,7 @@ export const DeleteTenantResponse = {
     return message;
   },
   fromJSON(object: any): DeleteTenantResponse {
-    const message = Object.create(
-      baseDeleteTenantResponse,
-    ) as DeleteTenantResponse;
+    const message = Object.create(baseDeleteTenantResponse) as DeleteTenantResponse;
     if (object.tenant !== undefined && object.tenant !== null) {
       message.tenant = Tenant.fromJSON(object.tenant);
     } else {
@@ -1939,9 +1774,7 @@ export const DeleteTenantResponse = {
     return message;
   },
   fromPartial(object: DeepPartial<DeleteTenantResponse>): DeleteTenantResponse {
-    const message = Object.create(
-      baseDeleteTenantResponse,
-    ) as DeleteTenantResponse;
+    const message = Object.create(baseDeleteTenantResponse) as DeleteTenantResponse;
     if (object.tenant !== undefined && object.tenant !== null) {
       message.tenant = Tenant.fromPartial(object.tenant);
     } else {
@@ -2003,10 +1836,7 @@ export const ReadTenantRequest = {
 };
 
 export const ReadTenantResponse = {
-  encode(
-    message: ReadTenantResponse,
-    writer: Writer = Writer.create(),
-  ): Writer {
+  encode(message: ReadTenantResponse, writer: Writer = Writer.create()): Writer {
     if (message.tenant !== undefined && message.tenant !== undefined) {
       Tenant.encode(message.tenant, writer.uint32(10).fork()).ldelim();
     }
@@ -2054,24 +1884,16 @@ export const ReadTenantResponse = {
 };
 
 export const UpdateTenantRequest = {
-  encode(
-    message: UpdateTenantRequest,
-    writer: Writer = Writer.create(),
-  ): Writer {
+  encode(message: UpdateTenantRequest, writer: Writer = Writer.create()): Writer {
     writer.uint32(10).string(message.id);
     if (message.data !== undefined && message.data !== undefined) {
-      UpdateTenantPayload.encode(
-        message.data,
-        writer.uint32(18).fork(),
-      ).ldelim();
+      UpdateTenantPayload.encode(message.data, writer.uint32(18).fork()).ldelim();
     }
     return writer;
   },
   decode(reader: Reader, length?: number): UpdateTenantRequest {
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = Object.create(
-      baseUpdateTenantRequest,
-    ) as UpdateTenantRequest;
+    const message = Object.create(baseUpdateTenantRequest) as UpdateTenantRequest;
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -2089,9 +1911,7 @@ export const UpdateTenantRequest = {
     return message;
   },
   fromJSON(object: any): UpdateTenantRequest {
-    const message = Object.create(
-      baseUpdateTenantRequest,
-    ) as UpdateTenantRequest;
+    const message = Object.create(baseUpdateTenantRequest) as UpdateTenantRequest;
     if (object.id !== undefined && object.id !== null) {
       message.id = String(object.id);
     } else {
@@ -2105,9 +1925,7 @@ export const UpdateTenantRequest = {
     return message;
   },
   fromPartial(object: DeepPartial<UpdateTenantRequest>): UpdateTenantRequest {
-    const message = Object.create(
-      baseUpdateTenantRequest,
-    ) as UpdateTenantRequest;
+    const message = Object.create(baseUpdateTenantRequest) as UpdateTenantRequest;
     if (object.id !== undefined && object.id !== null) {
       message.id = object.id;
     } else {
@@ -2123,18 +1941,13 @@ export const UpdateTenantRequest = {
   toJSON(message: UpdateTenantRequest): unknown {
     const obj: any = {};
     obj.id = message.id || '';
-    obj.data = message.data
-      ? UpdateTenantPayload.toJSON(message.data)
-      : undefined;
+    obj.data = message.data ? UpdateTenantPayload.toJSON(message.data) : undefined;
     return obj;
   },
 };
 
 export const UpdateTenantResponse = {
-  encode(
-    message: UpdateTenantResponse,
-    writer: Writer = Writer.create(),
-  ): Writer {
+  encode(message: UpdateTenantResponse, writer: Writer = Writer.create()): Writer {
     if (message.tenant !== undefined && message.tenant !== undefined) {
       Tenant.encode(message.tenant, writer.uint32(10).fork()).ldelim();
     }
@@ -2142,9 +1955,7 @@ export const UpdateTenantResponse = {
   },
   decode(reader: Reader, length?: number): UpdateTenantResponse {
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = Object.create(
-      baseUpdateTenantResponse,
-    ) as UpdateTenantResponse;
+    const message = Object.create(baseUpdateTenantResponse) as UpdateTenantResponse;
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -2159,9 +1970,7 @@ export const UpdateTenantResponse = {
     return message;
   },
   fromJSON(object: any): UpdateTenantResponse {
-    const message = Object.create(
-      baseUpdateTenantResponse,
-    ) as UpdateTenantResponse;
+    const message = Object.create(baseUpdateTenantResponse) as UpdateTenantResponse;
     if (object.tenant !== undefined && object.tenant !== null) {
       message.tenant = Tenant.fromJSON(object.tenant);
     } else {
@@ -2170,9 +1979,7 @@ export const UpdateTenantResponse = {
     return message;
   },
   fromPartial(object: DeepPartial<UpdateTenantResponse>): UpdateTenantResponse {
-    const message = Object.create(
-      baseUpdateTenantResponse,
-    ) as UpdateTenantResponse;
+    const message = Object.create(baseUpdateTenantResponse) as UpdateTenantResponse;
     if (object.tenant !== undefined && object.tenant !== null) {
       message.tenant = Tenant.fromPartial(object.tenant);
     } else {
@@ -2188,10 +1995,7 @@ export const UpdateTenantResponse = {
 };
 
 export const InviteMemberRequest = {
-  encode(
-    message: InviteMemberRequest,
-    writer: Writer = Writer.create(),
-  ): Writer {
+  encode(message: InviteMemberRequest, writer: Writer = Writer.create()): Writer {
     writer.uint32(18).string(message.email);
     writer.uint32(26).string(message.userId);
     writer.uint32(50).string(message.role);
@@ -2199,9 +2003,7 @@ export const InviteMemberRequest = {
   },
   decode(reader: Reader, length?: number): InviteMemberRequest {
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = Object.create(
-      baseInviteMemberRequest,
-    ) as InviteMemberRequest;
+    const message = Object.create(baseInviteMemberRequest) as InviteMemberRequest;
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -2222,9 +2024,7 @@ export const InviteMemberRequest = {
     return message;
   },
   fromJSON(object: any): InviteMemberRequest {
-    const message = Object.create(
-      baseInviteMemberRequest,
-    ) as InviteMemberRequest;
+    const message = Object.create(baseInviteMemberRequest) as InviteMemberRequest;
     if (object.email !== undefined && object.email !== null) {
       message.email = String(object.email);
     } else {
@@ -2243,9 +2043,7 @@ export const InviteMemberRequest = {
     return message;
   },
   fromPartial(object: DeepPartial<InviteMemberRequest>): InviteMemberRequest {
-    const message = Object.create(
-      baseInviteMemberRequest,
-    ) as InviteMemberRequest;
+    const message = Object.create(baseInviteMemberRequest) as InviteMemberRequest;
     if (object.email !== undefined && object.email !== null) {
       message.email = object.email;
     } else {
@@ -2273,10 +2071,7 @@ export const InviteMemberRequest = {
 };
 
 export const InviteMemberResponse = {
-  encode(
-    message: InviteMemberResponse,
-    writer: Writer = Writer.create(),
-  ): Writer {
+  encode(message: InviteMemberResponse, writer: Writer = Writer.create()): Writer {
     if (message.member !== undefined && message.member !== undefined) {
       Member.encode(message.member, writer.uint32(10).fork()).ldelim();
     }
@@ -2284,9 +2079,7 @@ export const InviteMemberResponse = {
   },
   decode(reader: Reader, length?: number): InviteMemberResponse {
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = Object.create(
-      baseInviteMemberResponse,
-    ) as InviteMemberResponse;
+    const message = Object.create(baseInviteMemberResponse) as InviteMemberResponse;
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -2301,9 +2094,7 @@ export const InviteMemberResponse = {
     return message;
   },
   fromJSON(object: any): InviteMemberResponse {
-    const message = Object.create(
-      baseInviteMemberResponse,
-    ) as InviteMemberResponse;
+    const message = Object.create(baseInviteMemberResponse) as InviteMemberResponse;
     if (object.member !== undefined && object.member !== null) {
       message.member = Member.fromJSON(object.member);
     } else {
@@ -2312,9 +2103,7 @@ export const InviteMemberResponse = {
     return message;
   },
   fromPartial(object: DeepPartial<InviteMemberResponse>): InviteMemberResponse {
-    const message = Object.create(
-      baseInviteMemberResponse,
-    ) as InviteMemberResponse;
+    const message = Object.create(baseInviteMemberResponse) as InviteMemberResponse;
     if (object.member !== undefined && object.member !== null) {
       message.member = Member.fromPartial(object.member);
     } else {
@@ -2406,10 +2195,7 @@ export const FindMemberRequest = {
 };
 
 export const FindMemberResponse = {
-  encode(
-    message: FindMemberResponse,
-    writer: Writer = Writer.create(),
-  ): Writer {
+  encode(message: FindMemberResponse, writer: Writer = Writer.create()): Writer {
     for (const v of message.members) {
       Member.encode(v!, writer.uint32(10).fork()).ldelim();
     }
@@ -2455,9 +2241,7 @@ export const FindMemberResponse = {
   toJSON(message: FindMemberResponse): unknown {
     const obj: any = {};
     if (message.members) {
-      obj.members = message.members.map((e) =>
-        e ? Member.toJSON(e) : undefined,
-      );
+      obj.members = message.members.map(e => e ? Member.toJSON(e) : undefined);
     } else {
       obj.members = [];
     }
@@ -2466,18 +2250,13 @@ export const FindMemberResponse = {
 };
 
 export const DeleteMemberRequest = {
-  encode(
-    message: DeleteMemberRequest,
-    writer: Writer = Writer.create(),
-  ): Writer {
+  encode(message: DeleteMemberRequest, writer: Writer = Writer.create()): Writer {
     writer.uint32(10).string(message.id);
     return writer;
   },
   decode(reader: Reader, length?: number): DeleteMemberRequest {
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = Object.create(
-      baseDeleteMemberRequest,
-    ) as DeleteMemberRequest;
+    const message = Object.create(baseDeleteMemberRequest) as DeleteMemberRequest;
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -2492,9 +2271,7 @@ export const DeleteMemberRequest = {
     return message;
   },
   fromJSON(object: any): DeleteMemberRequest {
-    const message = Object.create(
-      baseDeleteMemberRequest,
-    ) as DeleteMemberRequest;
+    const message = Object.create(baseDeleteMemberRequest) as DeleteMemberRequest;
     if (object.id !== undefined && object.id !== null) {
       message.id = String(object.id);
     } else {
@@ -2503,9 +2280,7 @@ export const DeleteMemberRequest = {
     return message;
   },
   fromPartial(object: DeepPartial<DeleteMemberRequest>): DeleteMemberRequest {
-    const message = Object.create(
-      baseDeleteMemberRequest,
-    ) as DeleteMemberRequest;
+    const message = Object.create(baseDeleteMemberRequest) as DeleteMemberRequest;
     if (object.id !== undefined && object.id !== null) {
       message.id = object.id;
     } else {
@@ -2521,10 +2296,7 @@ export const DeleteMemberRequest = {
 };
 
 export const DeleteMemberResponse = {
-  encode(
-    message: DeleteMemberResponse,
-    writer: Writer = Writer.create(),
-  ): Writer {
+  encode(message: DeleteMemberResponse, writer: Writer = Writer.create()): Writer {
     if (message.member !== undefined && message.member !== undefined) {
       Member.encode(message.member, writer.uint32(10).fork()).ldelim();
     }
@@ -2532,9 +2304,7 @@ export const DeleteMemberResponse = {
   },
   decode(reader: Reader, length?: number): DeleteMemberResponse {
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = Object.create(
-      baseDeleteMemberResponse,
-    ) as DeleteMemberResponse;
+    const message = Object.create(baseDeleteMemberResponse) as DeleteMemberResponse;
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -2549,9 +2319,7 @@ export const DeleteMemberResponse = {
     return message;
   },
   fromJSON(object: any): DeleteMemberResponse {
-    const message = Object.create(
-      baseDeleteMemberResponse,
-    ) as DeleteMemberResponse;
+    const message = Object.create(baseDeleteMemberResponse) as DeleteMemberResponse;
     if (object.member !== undefined && object.member !== null) {
       message.member = Member.fromJSON(object.member);
     } else {
@@ -2560,9 +2328,7 @@ export const DeleteMemberResponse = {
     return message;
   },
   fromPartial(object: DeepPartial<DeleteMemberResponse>): DeleteMemberResponse {
-    const message = Object.create(
-      baseDeleteMemberResponse,
-    ) as DeleteMemberResponse;
+    const message = Object.create(baseDeleteMemberResponse) as DeleteMemberResponse;
     if (object.member !== undefined && object.member !== null) {
       message.member = Member.fromPartial(object.member);
     } else {
@@ -2624,10 +2390,7 @@ export const ReadMemberRequest = {
 };
 
 export const ReadMemberResponse = {
-  encode(
-    message: ReadMemberResponse,
-    writer: Writer = Writer.create(),
-  ): Writer {
+  encode(message: ReadMemberResponse, writer: Writer = Writer.create()): Writer {
     if (message.member !== undefined && message.member !== undefined) {
       Member.encode(message.member, writer.uint32(10).fork()).ldelim();
     }
@@ -2675,10 +2438,7 @@ export const ReadMemberResponse = {
 };
 
 export const UpdateMemberRequest = {
-  encode(
-    message: UpdateMemberRequest,
-    writer: Writer = Writer.create(),
-  ): Writer {
+  encode(message: UpdateMemberRequest, writer: Writer = Writer.create()): Writer {
     writer.uint32(10).string(message.id);
     writer.uint32(18).string(message.status);
     writer.uint32(26).string(message.role);
@@ -2686,9 +2446,7 @@ export const UpdateMemberRequest = {
   },
   decode(reader: Reader, length?: number): UpdateMemberRequest {
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = Object.create(
-      baseUpdateMemberRequest,
-    ) as UpdateMemberRequest;
+    const message = Object.create(baseUpdateMemberRequest) as UpdateMemberRequest;
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -2709,9 +2467,7 @@ export const UpdateMemberRequest = {
     return message;
   },
   fromJSON(object: any): UpdateMemberRequest {
-    const message = Object.create(
-      baseUpdateMemberRequest,
-    ) as UpdateMemberRequest;
+    const message = Object.create(baseUpdateMemberRequest) as UpdateMemberRequest;
     if (object.id !== undefined && object.id !== null) {
       message.id = String(object.id);
     } else {
@@ -2730,9 +2486,7 @@ export const UpdateMemberRequest = {
     return message;
   },
   fromPartial(object: DeepPartial<UpdateMemberRequest>): UpdateMemberRequest {
-    const message = Object.create(
-      baseUpdateMemberRequest,
-    ) as UpdateMemberRequest;
+    const message = Object.create(baseUpdateMemberRequest) as UpdateMemberRequest;
     if (object.id !== undefined && object.id !== null) {
       message.id = object.id;
     } else {
@@ -2760,10 +2514,7 @@ export const UpdateMemberRequest = {
 };
 
 export const UpdateMemberResponse = {
-  encode(
-    message: UpdateMemberResponse,
-    writer: Writer = Writer.create(),
-  ): Writer {
+  encode(message: UpdateMemberResponse, writer: Writer = Writer.create()): Writer {
     if (message.member !== undefined && message.member !== undefined) {
       Member.encode(message.member, writer.uint32(10).fork()).ldelim();
     }
@@ -2771,9 +2522,7 @@ export const UpdateMemberResponse = {
   },
   decode(reader: Reader, length?: number): UpdateMemberResponse {
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = Object.create(
-      baseUpdateMemberResponse,
-    ) as UpdateMemberResponse;
+    const message = Object.create(baseUpdateMemberResponse) as UpdateMemberResponse;
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -2788,9 +2537,7 @@ export const UpdateMemberResponse = {
     return message;
   },
   fromJSON(object: any): UpdateMemberResponse {
-    const message = Object.create(
-      baseUpdateMemberResponse,
-    ) as UpdateMemberResponse;
+    const message = Object.create(baseUpdateMemberResponse) as UpdateMemberResponse;
     if (object.member !== undefined && object.member !== null) {
       message.member = Member.fromJSON(object.member);
     } else {
@@ -2799,9 +2546,7 @@ export const UpdateMemberResponse = {
     return message;
   },
   fromPartial(object: DeepPartial<UpdateMemberResponse>): UpdateMemberResponse {
-    const message = Object.create(
-      baseUpdateMemberResponse,
-    ) as UpdateMemberResponse;
+    const message = Object.create(baseUpdateMemberResponse) as UpdateMemberResponse;
     if (object.member !== undefined && object.member !== null) {
       message.member = Member.fromPartial(object.member);
     } else {
@@ -2817,18 +2562,13 @@ export const UpdateMemberResponse = {
 };
 
 export const AcceptMemberInvitationRequest = {
-  encode(
-    message: AcceptMemberInvitationRequest,
-    writer: Writer = Writer.create(),
-  ): Writer {
+  encode(message: AcceptMemberInvitationRequest, writer: Writer = Writer.create()): Writer {
     writer.uint32(10).string(message.token);
     return writer;
   },
   decode(reader: Reader, length?: number): AcceptMemberInvitationRequest {
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = Object.create(
-      baseAcceptMemberInvitationRequest,
-    ) as AcceptMemberInvitationRequest;
+    const message = Object.create(baseAcceptMemberInvitationRequest) as AcceptMemberInvitationRequest;
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -2843,9 +2583,7 @@ export const AcceptMemberInvitationRequest = {
     return message;
   },
   fromJSON(object: any): AcceptMemberInvitationRequest {
-    const message = Object.create(
-      baseAcceptMemberInvitationRequest,
-    ) as AcceptMemberInvitationRequest;
+    const message = Object.create(baseAcceptMemberInvitationRequest) as AcceptMemberInvitationRequest;
     if (object.token !== undefined && object.token !== null) {
       message.token = String(object.token);
     } else {
@@ -2853,12 +2591,8 @@ export const AcceptMemberInvitationRequest = {
     }
     return message;
   },
-  fromPartial(
-    object: DeepPartial<AcceptMemberInvitationRequest>,
-  ): AcceptMemberInvitationRequest {
-    const message = Object.create(
-      baseAcceptMemberInvitationRequest,
-    ) as AcceptMemberInvitationRequest;
+  fromPartial(object: DeepPartial<AcceptMemberInvitationRequest>): AcceptMemberInvitationRequest {
+    const message = Object.create(baseAcceptMemberInvitationRequest) as AcceptMemberInvitationRequest;
     if (object.token !== undefined && object.token !== null) {
       message.token = object.token;
     } else {
@@ -2874,10 +2608,7 @@ export const AcceptMemberInvitationRequest = {
 };
 
 export const AcceptMemberInvitationResponse = {
-  encode(
-    message: AcceptMemberInvitationResponse,
-    writer: Writer = Writer.create(),
-  ): Writer {
+  encode(message: AcceptMemberInvitationResponse, writer: Writer = Writer.create()): Writer {
     if (message.member !== undefined && message.member !== undefined) {
       Member.encode(message.member, writer.uint32(10).fork()).ldelim();
     }
@@ -2885,9 +2616,7 @@ export const AcceptMemberInvitationResponse = {
   },
   decode(reader: Reader, length?: number): AcceptMemberInvitationResponse {
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = Object.create(
-      baseAcceptMemberInvitationResponse,
-    ) as AcceptMemberInvitationResponse;
+    const message = Object.create(baseAcceptMemberInvitationResponse) as AcceptMemberInvitationResponse;
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -2902,9 +2631,7 @@ export const AcceptMemberInvitationResponse = {
     return message;
   },
   fromJSON(object: any): AcceptMemberInvitationResponse {
-    const message = Object.create(
-      baseAcceptMemberInvitationResponse,
-    ) as AcceptMemberInvitationResponse;
+    const message = Object.create(baseAcceptMemberInvitationResponse) as AcceptMemberInvitationResponse;
     if (object.member !== undefined && object.member !== null) {
       message.member = Member.fromJSON(object.member);
     } else {
@@ -2912,12 +2639,8 @@ export const AcceptMemberInvitationResponse = {
     }
     return message;
   },
-  fromPartial(
-    object: DeepPartial<AcceptMemberInvitationResponse>,
-  ): AcceptMemberInvitationResponse {
-    const message = Object.create(
-      baseAcceptMemberInvitationResponse,
-    ) as AcceptMemberInvitationResponse;
+  fromPartial(object: DeepPartial<AcceptMemberInvitationResponse>): AcceptMemberInvitationResponse {
+    const message = Object.create(baseAcceptMemberInvitationResponse) as AcceptMemberInvitationResponse;
     if (object.member !== undefined && object.member !== null) {
       message.member = Member.fromPartial(object.member);
     } else {
@@ -2934,14 +2657,14 @@ export const AcceptMemberInvitationResponse = {
 
 type DeepPartial<T> = {
   [P in keyof T]?: T[P] extends Array<infer U>
-    ? Array<DeepPartial<U>>
-    : T[P] extends ReadonlyArray<infer U>
-    ? ReadonlyArray<DeepPartial<U>>
-    : T[P] extends Date | Function | Uint8Array | undefined
-    ? T[P]
-    : T[P] extends infer U | undefined
-    ? DeepPartial<U>
-    : T[P] extends object
-    ? DeepPartial<T[P]>
-    : T[P];
+  ? Array<DeepPartial<U>>
+  : T[P] extends ReadonlyArray<infer U>
+  ? ReadonlyArray<DeepPartial<U>>
+  : T[P] extends Date | Function | Uint8Array | undefined
+  ? T[P]
+  : T[P] extends infer U | undefined
+  ? DeepPartial<U>
+  : T[P] extends object
+  ? DeepPartial<T[P]>
+  : T[P]
 };
