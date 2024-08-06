@@ -20,5 +20,5 @@ RUN nest build service-billing
 # Bundle app source
 COPY . .
 
-EXPOSE 5067
+EXPOSE 50067
 CMD ["node", "dist/apps/service-billing/main.js"]
