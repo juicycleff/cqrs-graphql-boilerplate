@@ -85,33 +85,41 @@ The next important folder is the  `/lib` folder. This folder contains all intern
  - `/lib/proto-schema` All GRPC protobuf files required by each service, is stored in here and shared amongst services that depends on them.
   
   Other folders such as `iac` which simply means Infrastructure as Code is teraform setup for creating a kubernetes cluster with just a simple command for running the microservices. `scripts` contains helper bash scripts for CI/CD.
-  
-## Installation  
+
+## Get Started
+### Installation  
   
 ```bash  
 $ yarn install
 ```  
   
-## Configuration  
+<!-- ## Configuration  
   
 Before starting the services, please create the appropriate consul (Default service registry Consul) kv store config for all the services. You can find the example config  
 in the folders of each service called `config.example`. The consul config key of say the `account service` should be  
 `ultimatebackend/config/io.ultimatebackend.srv.account` and just paste the config.yaml content in the consul store for that key in yaml and save.  
 You will need to set your sendgrid api key, so the backend can send emails on signup etc. If using stripe for payments you'll also need to put your public and private keys there too.  
-You can opt in for `etcd` or `kubernetes` as `service registry`.  
-  
-## Usage  
+You can opt in for `etcd` or `kubernetes` as `service registry`.   -->
 
-### With Docker locally
+### Start with `docker compose`
 ```bash
 $ docker-compose --project-directory=. -f docker-compose.dev.yml up --build
 ```
 
 > **Note:** I've seen some issues with consul docker image and so would recommend setting up consul manually before running this command
 > 
-  
-### Without Docker locally 
-  
+
+### Start with `docker run` 
+```bash  
+docker run --name mongo -d -p 27017:27017 mongo  
+docker run --name eventstore -d -p 1113:1113 -p 2113:2113 eventstore/eventstore:release-5.0.8 --insecure # insecure flag specifies no certificate required - suitable for devmode 
+docker run --name redis -d -p 6379:6379 redis
+docker run --name consul -d -p 8400:8400 -p 8500:8500 -p 8600:53/udp hashicorp/consul agent -server -bootstrap -ui -client 0.0.0.0
+docker run --name nats -d -p 4222:4222 -p 6222:6222 -p 8222:8222 nats
+```  
+ 
+### Start without Docker 
+#### Start Necessary Tools
 Consul, Mongodb, redis, memcached, and eventstore all need to be started first as our microservices need to connect to them.  
   
 Start consul locally  
@@ -123,20 +131,9 @@ For help installing consul on your local machine, visit [Consul Website](https:/
 Start mongodb locally  
 ```bash  
 mongod  
-```  
-  
-If you have docker installed  
-```bash  
-docker run --name mongo -d -p 27017:27017 mongo  
-docker run --name eventstore -d -p 1113:1113 -p 2113:2113 eventstore/eventstore:release-5.0.8 --insecure # insecure flag specifies no certificate required - suitable for devmode 
-docker run --name redis -d -p 6379:6379 redis
-docker run --name consul -d -p 8400:8400 -p 8500:8500 -p 8600:53/udp hashicorp/consul agent -server -bootstrap -ui -client 0.0.0.0
-docker run --name nats -d -p 4222:4222 -p 6222:6222 -p 8222:8222 nats
-```  
-  
-Otherwise, you can install and run redis and eventstore locally if you choose.  
-  
-### Running the microservices  
+```
+
+#### Running the microservices manually
 You should start the microservices in any other. Example  
   
 ```bash
@@ -163,7 +160,7 @@ $ npx nest start api-admin
 ```  
 > **Note:** You don't need all services running plus you can start them in any order.
   
-### Alternative method of running services  
+#### Alternative method of running services  
   
 If you find the nest cli using too much memory running each service, you can build them first and then run them:  
   
@@ -195,10 +192,10 @@ With the databases and the services running you can now start the gateways as me
 ```bash  
 yarn start:dev api-admin  
 ```  
+
+### Get started by registering a user on the admin gateway  
   
-## Get started by registering a user on the admin gateway  
-  
-In the graphql playground running at http://localhost:4000//graph you can register a user:  
+In the graphql playground running at http://localhost:4000/graph you can register a user:  
   
 ```graphql  
 mutation register {  
