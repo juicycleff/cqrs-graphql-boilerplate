@@ -87,6 +87,16 @@ The next important folder is the  `/lib` folder. This folder contains all intern
   Other folders such as `iac` which simply means Infrastructure as Code is teraform setup for creating a kubernetes cluster with just a simple command for running the microservices. `scripts` contains helper bash scripts for CI/CD.
 
 ## Get Started
+### Prerequisite
+Before running this app, ensure you're using node version 14. You can check your current node version with nvm:
+```
+nvm current
+```
+If node version 14 is not available on your machine, install it with this command:
+```
+nvm install 14
+```
+
 ### Installation  
   
 ```bash  
