@@ -45,7 +45,7 @@
     "@google-cloud/pubsub": "^2.19.0",
     "@grpc/grpc-js": "^1.5.7",
     "@iarna/toml": "^2.2.5",
-    "@kubernetes/client-node": "^0.16.3",
+    "@kubernetes/client-node": "^1.0.0",
     "@nestjs/common": "^8.4.0",
     "@nestjs/core": "^8.4.0",
     "@nestjs/cqrs": "^8.0.3",
